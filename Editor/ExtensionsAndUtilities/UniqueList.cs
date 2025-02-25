@@ -26,7 +26,6 @@ namespace RedBlueGames.MulliganRenamer
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using UnityEngine;
 
     /// <summary>
     /// UniqueList enforces all elements in the list are unique, allowing for constant time Contains

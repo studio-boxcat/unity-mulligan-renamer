@@ -25,7 +25,6 @@ namespace RedBlueGames.MulliganRenamer
 {
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using UnityEditor;
     using UnityEngine;
 
     /// <summary>

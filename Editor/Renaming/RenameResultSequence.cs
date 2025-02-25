@@ -25,7 +25,6 @@ namespace RedBlueGames.MulliganRenamer
 {
     using System.Collections.Generic;
     using System.Linq;
-    using UnityEngine;
 
     /// <summary>
     /// Rename result sequence contains the data for the results of a BulkRename operation.

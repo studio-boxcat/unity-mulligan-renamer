@@ -23,9 +23,6 @@ SOFTWARE.
 
 namespace RedBlueGames.MulliganRenamer
 {
-    using UnityEditor;
-    using UnityEngine;
-
     /// <summary>
     /// RenameOperation for adding a repeating sequence of strings. This is only necessary
     /// because we don't serialize drawers, so in order to figure out which drawer

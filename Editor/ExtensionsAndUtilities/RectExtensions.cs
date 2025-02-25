@@ -24,7 +24,6 @@ SOFTWARE.
 namespace RedBlueGames.MulliganRenamer
 {
     using UnityEngine;
-    using UnityEditor;
 
     public static class RectExtensions
     {

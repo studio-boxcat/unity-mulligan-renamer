@@ -26,7 +26,6 @@ namespace RedBlueGames.MulliganRenamer
     using System.Collections;
     using System.Collections.Generic;
     using UnityEditor;
-    using UnityEngine;
 
     /// <summary>
     /// This class is responsible for getting, or retrieving, the up to date languages from the web.

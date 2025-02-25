@@ -23,10 +23,6 @@ SOFTWARE.
 
 namespace RedBlueGames.MulliganRenamer
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     /// <summary>
     /// Object name delta tracks name changes to an Object.
     /// </summary>

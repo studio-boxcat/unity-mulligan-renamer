@@ -23,10 +23,6 @@ SOFTWARE.
 
 namespace RedBlueGames.MulliganRenamer
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     /// <summary>
     /// Diff contains a single change to a string, represented as an insertion, deletion, or no change (equal)
     /// </summary>

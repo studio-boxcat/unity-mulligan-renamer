@@ -24,7 +24,6 @@ SOFTWARE.
 namespace RedBlueGames.MulliganRenamer
 {
     using System.Collections.Generic;
-    using System.Linq;
     using UnityEditor;
     using UnityEngine;
 

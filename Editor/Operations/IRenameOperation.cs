@@ -23,8 +23,6 @@ SOFTWARE.
 
 namespace RedBlueGames.MulliganRenamer
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Interface designed for an operation that takes a string and renames it based on a ruleset.
     /// </summary>

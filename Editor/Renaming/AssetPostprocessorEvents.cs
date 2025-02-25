@@ -23,8 +23,6 @@ SOFTWARE.
 
 namespace RedBlueGames.MulliganRenamer
 {
-    using UnityEngine;
-
     /// <summary>
     /// Asset postprocessor events that are invoked by the AssetPostprocessorEventsDispatcher.
     /// </summary>

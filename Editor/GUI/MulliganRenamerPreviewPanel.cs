@@ -23,7 +23,6 @@ SOFTWARE.
 
 namespace RedBlueGames.MulliganRenamer
 {
-    using System;
     using System.Collections.Generic;
     using UnityEditor;
     using UnityEngine;
