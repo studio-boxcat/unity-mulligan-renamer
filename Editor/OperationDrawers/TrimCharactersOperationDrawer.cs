@@ -36,7 +36,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return GetOperationPath("delete", "trimCharacters");
+                return Texts.delete + "/" + Texts.trimCharacters;
             }
         }
 
@@ -48,7 +48,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("trimCharacters");
+                return Texts.trimCharacters;
             }
         }
 
@@ -72,7 +72,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("deleteFromFront");
+                return Texts.deleteFromFront;
             }
         }
 
@@ -92,17 +92,17 @@ namespace RedBlueGames.MulliganRenamer
         /// <param name="controlPrefix">The prefix of the control to assign to the control names</param>
         protected override void DrawContents(Rect operationRect, int controlPrefix)
         {
-            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, LocalizationManager.Instance.GetTranslation("deleteFromFront")));
+            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, Texts.deleteFromFront));
             this.RenameOperation.NumFrontDeleteChars = EditorGUI.IntField(
                 operationRect.GetSplitVertical(1, 2, LineSpacing),
-                LocalizationManager.Instance.GetTranslation("deleteFromFront"),
+                Texts.deleteFromFront,
                 this.RenameOperation.NumFrontDeleteChars);
             this.RenameOperation.NumFrontDeleteChars = Mathf.Max(0, this.RenameOperation.NumFrontDeleteChars);
 
-            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, LocalizationManager.Instance.GetTranslation("deleteFromBack")));
+            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, Texts.deleteFromBack));
             this.RenameOperation.NumBackDeleteChars = EditorGUI.IntField(
                 operationRect.GetSplitVertical(2, 2, LineSpacing),
-                LocalizationManager.Instance.GetTranslation("deleteFromBack"),
+                Texts.deleteFromBack,
                 this.RenameOperation.NumBackDeleteChars);
             this.RenameOperation.NumBackDeleteChars = Mathf.Max(0, this.RenameOperation.NumBackDeleteChars);
         }

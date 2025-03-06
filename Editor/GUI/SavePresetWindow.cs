@@ -93,20 +93,20 @@ namespace RedBlueGames.MulliganRenamer
             }
 
             EditorGUI.BeginDisabledGroup(!IsNameValid(this.enteredName));
-            if (GUILayout.Button(LocalizationManager.Instance.GetTranslation("save")) || (hitEnter && IsNameValid(this.enteredName)))
+            if (GUILayout.Button(Texts.save) || (hitEnter && IsNameValid(this.enteredName)))
             {
                 var saveAndClose = false;
                 if (this.existingPresetNames.Contains(this.enteredName))
                 {
                     var popupMessage = string.Format(
-                        LocalizationManager.Instance.GetTranslation("errorPresetNameAlreadyExists"),
+                        Texts.errorPresetNameAlreadyExists,
                         this.enteredName
                     );
 
-                    saveAndClose = EditorUtility.DisplayDialog(LocalizationManager.Instance.GetTranslation("warning"),
+                    saveAndClose = EditorUtility.DisplayDialog(Texts.warning,
                                                                 popupMessage,
-                                                                LocalizationManager.Instance.GetTranslation("replace"),
-                                                                LocalizationManager.Instance.GetTranslation("no"));
+                                                                Texts.replace,
+                                                                Texts.no);
                 }
                 else
                 {

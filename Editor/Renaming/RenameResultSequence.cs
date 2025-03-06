@@ -88,7 +88,7 @@ namespace RedBlueGames.MulliganRenamer
             if (stepIndex < 0 || stepIndex >= this.NumSteps)
             {
                 var exception = string.Format(
-                                    LocalizationManager.Instance.GetTranslation("errorTryintToGetOriginalName"),
+                                    Texts.errorTryintToGetOriginalName,
                                     stepIndex);
                 throw new System.ArgumentException(exception, "stepIndex");
             }
@@ -106,7 +106,7 @@ namespace RedBlueGames.MulliganRenamer
             if (stepIndex < 0 || stepIndex >= this.NumSteps)
             {
                 var exception = string.Format(
-                    LocalizationManager.Instance.GetTranslation("errorTryingToGetOriginalNameOutOfBounds"),
+                    Texts.errorTryingToGetOriginalNameOutOfBounds,
                     stepIndex);
                 throw new System.ArgumentException(exception, "stepIndex");
             }

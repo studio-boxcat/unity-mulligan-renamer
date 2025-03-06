@@ -53,7 +53,7 @@ namespace RedBlueGames.MulliganRenamer
                 var copySerialized = JsonUtility.ToJson(preset);
                 var copy = JsonUtility.FromJson<RenameSequencePreset>(copySerialized);
                 this.presetsToDraw.Add(copy);
-                this.uniqueNames.Add(copy, LocalizationManager.Instance.GetTranslation("preset") + " " + i);
+                this.uniqueNames.Add(copy, Texts.preset + " " + i);
             }
 
             this.reorderableList.list = this.presetsToDraw;
@@ -76,7 +76,7 @@ namespace RedBlueGames.MulliganRenamer
 
         private void DrawHeader(Rect rect)
         {
-            GUI.Label(rect, LocalizationManager.Instance.GetTranslation("savedPresets"), EditorStyles.label);
+            GUI.Label(rect, Texts.savedPresets, EditorStyles.label);
         }
 
         private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
@@ -147,7 +147,7 @@ namespace RedBlueGames.MulliganRenamer
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Space(50.0f);
                 EditorGUILayout.LabelField(
-                    LocalizationManager.Instance.GetTranslation("errorNoSavedPresets"),
+                    Texts.errorNoSavedPresets,
                     EditorStyles.wordWrappedLabel);
                 GUILayout.Space(50.0f);
                 EditorGUILayout.EndHorizontal();
@@ -160,13 +160,13 @@ namespace RedBlueGames.MulliganRenamer
             var indexToRemove = list.index;
             var elementToDelete = this.presetsToDraw[indexToRemove];
             var popupMessage = string.Format(
-                LocalizationManager.Instance.GetTranslation("areYouSureDelete"), elementToDelete.Name
+                Texts.areYouSureDelete, elementToDelete.Name
             );
 
-            if (EditorUtility.DisplayDialog(LocalizationManager.Instance.GetTranslation("warning"),
+            if (EditorUtility.DisplayDialog(Texts.warning,
                                             popupMessage,
-                                            LocalizationManager.Instance.GetTranslation("deletePreset"),
-                                            LocalizationManager.Instance.GetTranslation("no")))
+                                            Texts.deletePreset,
+                                            Texts.no))
             {
                 this.presetsToDraw.RemoveAt(indexToRemove);
                 this.reorderableList.index = 0;

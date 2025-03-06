@@ -47,23 +47,18 @@ namespace RedBlueGames.MulliganRenamer
 
             UnversionedOperationSerializedKeys = new Dictionary<string, System.Type>()
             {
-                {GetOperationPath("add", "prefixOrSuffix"), typeof(AddStringOperation)},
-                {GetOperationPath("add", "stringSequence"), typeof(AddStringSequenceOperation)},
-                {GetOperationPath("modify", "changeCase"), typeof(ChangeCaseOperation)},
-                {GetOperationPath("add", "countByLetter"), typeof(CountByLetterOperation)},
-                {GetOperationPath("add", "enumerate"), typeof(EnumerateOperation)},
-                {GetOperationPath("delete", "removeCharacters"), typeof(RemoveCharactersOperation)},
-                {GetOperationPath("replace", "rename"), typeof(ReplaceNameOperation)},
-                {GetOperationPath("replace", "replaceString"), typeof(ReplaceStringOperation)},
-                {GetOperationPath("delete", "trimCharacters"), typeof(TrimCharactersOperation)},
+                {Texts.add + "/" + Texts.prefixOrSuffix, typeof(AddStringOperation)},
+                {Texts.add + "/" + Texts.stringSequence, typeof(AddStringSequenceOperation)},
+                {Texts.modify + "/" + Texts.changeCase, typeof(ChangeCaseOperation)},
+                {Texts.add + "/" + Texts.countByLetter, typeof(CountByLetterOperation)},
+                {Texts.add + "/" + Texts.enumerate, typeof(EnumerateOperation)},
+                {Texts.delete + "/" + Texts.removeCharacters, typeof(RemoveCharactersOperation)},
+                {Texts.replace + "/" + Texts.rename, typeof(ReplaceNameOperation)},
+                {Texts.replace + "/" + Texts.replaceString, typeof(ReplaceStringOperation)},
+                {Texts.delete + "/" + Texts.trimCharacters, typeof(TrimCharactersOperation)},
             };
 
             Initialized = true;
-        }
-
-        private static string GetOperationPath(string folder, string operationTitle)
-        {
-            return LocalizationManager.Instance.GetTranslation(folder) + "/" + LocalizationManager.Instance.GetTranslation(operationTitle);
         }
 
         private List<T> operationSequence;

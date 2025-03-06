@@ -36,7 +36,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return GetOperationPath("add", "prefixOrSuffix");
+                return Texts.add + "/" + Texts.prefixOrSuffix;
             }
         }
 
@@ -48,7 +48,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("addPrefixOrSuffix");
+                return Texts.addPrefixOrSuffix;
             }
         }
 
@@ -72,7 +72,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("prefix");
+                return Texts.prefix;
             }
         }
 
@@ -92,16 +92,16 @@ namespace RedBlueGames.MulliganRenamer
         /// <param name="controlPrefix">The prefix of the control to assign to the control names</param>
         protected override void DrawContents(Rect operationRect, int controlPrefix)
         {
-            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, LocalizationManager.Instance.GetTranslation("prefix")));
+            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, Texts.prefix));
             this.RenameOperation.Prefix = EditorGUI.TextField(
                 operationRect.GetSplitVertical(1, 2, LineSpacing),
-                LocalizationManager.Instance.GetTranslation("prefix"),
+                Texts.prefix,
                 this.RenameOperation.Prefix);
 
-            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, LocalizationManager.Instance.GetTranslation("suffix")));
+            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, Texts.suffix));
             this.RenameOperation.Suffix = EditorGUI.TextField(
                 operationRect.GetSplitVertical(2, 2, LineSpacing),
-                LocalizationManager.Instance.GetTranslation("suffix"),
+                Texts.suffix,
                 this.RenameOperation.Suffix);
         }
     }

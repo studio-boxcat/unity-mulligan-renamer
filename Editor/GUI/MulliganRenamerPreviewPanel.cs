@@ -155,14 +155,6 @@ namespace RedBlueGames.MulliganRenamer
             this.contentsLayout.MinimumColumnWidth = MinColumnWidth;
         }
 
-        /// <summary>
-        /// Refresh the GUIContents of this window. Use this if the language changes, for example
-        /// </summary>
-        public void RefreshGUIContent()
-        {
-            this.InitializeGUIContents();
-        }
-
         private static PreviewRowResult DrawPreviewRow(Rect rowRect, PreviewRowModel info, PreviewRowStyle style)
         {
             PreviewRowResult result = PreviewRowResult.None;
@@ -290,10 +282,10 @@ namespace RedBlueGames.MulliganRenamer
         {
             this.guiContents = new GUIContents();
 
-            this.guiContents.DropPrompt = new GUIContent(LocalizationManager.Instance.GetTranslation("noObjectsSpecified"));
-            this.guiContents.DropPromptHintInsideScroll = new GUIContent(LocalizationManager.Instance.GetTranslation("addMoreObjectsDragHere"));
-            this.guiContents.DropPromptHint = new GUIContent(LocalizationManager.Instance.GetTranslation("addMoreObjectsDragPanel"));
-            this.guiContents.DropPromptRepeat = new GUIContent(LocalizationManager.Instance.GetTranslation("toRenameMoreObjects"));
+            this.guiContents.DropPrompt = new GUIContent(Texts.noObjectsSpecified);
+            this.guiContents.DropPromptHintInsideScroll = new GUIContent(Texts.addMoreObjectsDragHere);
+            this.guiContents.DropPromptHint = new GUIContent(Texts.addMoreObjectsDragPanel);
+            this.guiContents.DropPromptRepeat = new GUIContent(Texts.toRenameMoreObjects);
         }
 
         private void InitializeGUIStyles()
@@ -458,7 +450,7 @@ namespace RedBlueGames.MulliganRenamer
                 var removeAllButtonRect = new Rect(addSelectedObjectsButtonRect);
                 removeAllButtonRect.width = 100.0f;
                 removeAllButtonRect.x -= (removeAllButtonRect.width + buttonSpacing);
-                if (GUI.Button(removeAllButtonRect, LocalizationManager.Instance.GetTranslation("removeAll")))
+                if (GUI.Button(removeAllButtonRect, Texts.removeAll))
                 {
                     if (this.RemoveAllClicked != null)
                     {
@@ -519,14 +511,14 @@ namespace RedBlueGames.MulliganRenamer
                 string noun;
                 if (this.NumPreviouslyRenamedObjects == 1)
                 {
-                    noun = LocalizationManager.Instance.GetTranslation("object");
+                    noun = Texts.obj;
                 }
                 else
                 {
-                    noun = LocalizationManager.Instance.GetTranslation("objects");
+                    noun = Texts.objects;
                 }
 
-                var renameSuccessContent = new GUIContent(string.Format("{0} {1} {2}", this.NumPreviouslyRenamedObjects, noun, LocalizationManager.Instance.GetTranslation("renamed")));
+                var renameSuccessContent = new GUIContent(string.Format("{0} {1} {2}", this.NumPreviouslyRenamedObjects, noun, Texts.renamed));
                 EditorGUI.LabelField(labelRect, renameSuccessContent, this.guiStyles.RenameSuccessPrompt);
                 GUI.contentColor = oldColor;
 
@@ -555,8 +547,8 @@ namespace RedBlueGames.MulliganRenamer
                 previewPanelScrollPosition.x = 0;
             }
 
-            string originalNameColumnHeader = LocalizationManager.Instance.GetTranslation(previewContents.RenameStepIndex < 1 ? "original" : "before");
-            string newNameColumnHeader = LocalizationManager.Instance.GetTranslation("after");
+            string originalNameColumnHeader = previewContents.RenameStepIndex < 1 ? Texts.original : Texts.before;
+            string newNameColumnHeader = Texts.after;
             this.DrawPreviewHeader(
                 scrollLayout.HeaderRect,
                 -previewPanelScrollPosition.x,
@@ -639,7 +631,7 @@ namespace RedBlueGames.MulliganRenamer
 
             if (thirdColumnWidth > 0.0f)
             {
-                EditorGUI.LabelField(thirdColumnRect, LocalizationManager.Instance.GetTranslation("finalName"), EditorStyles.boldLabel);
+                EditorGUI.LabelField(thirdColumnRect, Texts.finalName, EditorStyles.boldLabel);
             }
 
             GUI.EndGroup();
@@ -841,7 +833,7 @@ namespace RedBlueGames.MulliganRenamer
         private void DrawAddSelectedObjectsButton(Rect buttonRect)
         {
             EditorGUI.BeginDisabledGroup(DisableAddSelectedObjectsButton);
-            if (GUI.Button(buttonRect, LocalizationManager.Instance.GetTranslation("addSelectedObjects")))
+            if (GUI.Button(buttonRect, Texts.addSelectedObjects))
             {
                 if (this.AddSelectedObjectsClicked != null)
                 {
@@ -1134,7 +1126,7 @@ namespace RedBlueGames.MulliganRenamer
                     else
                     {
                         throw new System.IndexOutOfRangeException(
-                            LocalizationManager.Instance.GetTranslation("errorTryingToAccessModel") + index);
+                            Texts.errorTryingToAccessModel + index);
                     }
                 }
             }
@@ -1172,7 +1164,7 @@ namespace RedBlueGames.MulliganRenamer
                         }
                         else
                         {
-                            info.WarningMessage = LocalizationManager.Instance.GetTranslation("warningNewNameMatchesExisting");
+                            info.WarningMessage = Texts.warningNewNameMatchesExisting;
                         }
                     }
                     else
@@ -1230,11 +1222,11 @@ namespace RedBlueGames.MulliganRenamer
             {
                 if (preview.HasInvalidEmptyFinalName)
                 {
-                    return LocalizationManager.Instance.GetTranslation("assetBlankName");
+                    return Texts.assetBlankName;
                 }
                 else if (preview.FinalNameContainsInvalidCharacters)
                 {
-                    return LocalizationManager.Instance.GetTranslation("nameIncludeInvalidCharacter");
+                    return Texts.nameIncludeInvalidCharacter;
                 }
                 else
                 {

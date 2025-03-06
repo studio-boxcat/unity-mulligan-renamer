@@ -36,7 +36,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return GetOperationPath("add", "stringSequence");
+                return Texts.add + "/" + Texts.stringSequence;
             }
         }
 
@@ -48,7 +48,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("addStringSequence");
+                return Texts.addStringSequence;
             }
         }
 
@@ -72,7 +72,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("sequence");
+                return Texts.sequence;
             }
         }
 
@@ -116,11 +116,11 @@ namespace RedBlueGames.MulliganRenamer
 
         private string[] DrawStringSequenceField(Rect rect, int controlPrefix, string[] stringSequence)
         {
-            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, LocalizationManager.Instance.GetTranslation("sequence")));
+            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, Texts.sequence));
 
             var sequenceContent = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("sequence"),
-                LocalizationManager.Instance.GetTranslation("theSequenceOfStringsToAddCommaSeparted"));
+                Texts.sequence,
+                Texts.theSequenceOfStringsToAddCommaSeparted);
             var oldSequence = StringUtilities.AddCommasBetweenStrings(stringSequence);
             var sequenceStrings = oldSequence;
             var sequenceWithCommas = EditorGUI.TextField(
@@ -134,8 +134,8 @@ namespace RedBlueGames.MulliganRenamer
         private bool DrawPrependField(Rect rect, int controlPrefix, bool originalPrepend)
         {
             var content = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("addAsPrefix"),
-                LocalizationManager.Instance.GetTranslation("addTheCountToTheFrontOfTheObjectName"));
+                Texts.addAsPrefix,
+                Texts.addTheCountToTheFrontOfTheObjectName);
             GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, content.text));
             return EditorGUI.Toggle(rect, content, originalPrepend);
         }

@@ -83,9 +83,9 @@ namespace RedBlueGames.MulliganRenamer
                     gameObjectsToRenameAsGameObjects.Add((GameObject)gameObjectToRename.NamedObject);
                 }
 
-                Undo.RecordObjects(gameObjectsToRenameAsGameObjects.ToArray(), LocalizationManager.Instance.GetTranslation("bulkRename"));
+                Undo.RecordObjects(gameObjectsToRenameAsGameObjects.ToArray(), Texts.bulkRename);
 
-                AssetRenameUndoer.RecordAssetRenames(LocalizationManager.Instance.GetTranslation("bulkRename"), objectsAndNewNames);
+                AssetRenameUndoer.RecordAssetRenames(Texts.bulkRename, objectsAndNewNames);
             }
 
             // Rename the objects and show a progress bar
@@ -267,8 +267,8 @@ namespace RedBlueGames.MulliganRenamer
 
         private static void UpdateProgressBar(int currentStep, int totalNumSteps)
         {
-            var infoString = string.Format(LocalizationManager.Instance.GetTranslation("renamingObjectXofY"), currentStep++, totalNumSteps);
-            EditorUtility.DisplayProgressBar(LocalizationManager.Instance.GetTranslation("renaming")+ "...", infoString, currentStep / (float)totalNumSteps);
+            var infoString = string.Format(Texts.renamingObjectXofY, currentStep++, totalNumSteps);
+            EditorUtility.DisplayProgressBar(Texts.renaming+ "...", infoString, currentStep / (float)totalNumSteps);
         }
 
         private static void SplitObjectsIntoCategories(
@@ -330,7 +330,7 @@ namespace RedBlueGames.MulliganRenamer
             if (asset.name != newName)
             {
                 var message = string.Format(
-                                  LocalizationManager.Instance.GetTranslation("errorAssetNotBulkRenamed"),
+                                  Texts.errorAssetNotBulkRenamed,
                                   asset.name,
                                   pathToAsset,
                                   newName);

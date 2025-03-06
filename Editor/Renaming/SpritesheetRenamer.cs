@@ -61,7 +61,7 @@ namespace RedBlueGames.MulliganRenamer
             if (!string.IsNullOrEmpty(existingPathToTexture) && pathToSprite != existingPathToTexture)
             {
                 var exception = string.Format(
-                                    LocalizationManager.Instance.GetTranslation("tryingToAddSpriteToRenamer"),
+                                    Texts.tryingToAddSpriteToRenamer,
                                     sprite.name,
                                     pathToSprite,
                                     existingPathToTexture);
@@ -72,7 +72,7 @@ namespace RedBlueGames.MulliganRenamer
             if (!System.IO.File.Exists(pathToMeta))
             {
                 var exception = string.Format(
-                                    LocalizationManager.Instance.GetTranslation("errorTryingToAddSpriteToRenamer"),
+                                    Texts.errorTryingToAddSpriteToRenamer,
                                     pathToMeta);
                 throw new System.ArgumentException(exception);
             }

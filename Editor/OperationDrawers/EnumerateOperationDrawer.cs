@@ -42,7 +42,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return GetOperationPath("add", "count");
+                return Texts.add + "/" + Texts.count;
             }
         }
 
@@ -54,7 +54,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("count");
+                return Texts.count;
             }
         }
 
@@ -78,7 +78,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("format");
+                return Texts.format;
             }
         }
 
@@ -138,8 +138,8 @@ namespace RedBlueGames.MulliganRenamer
         protected override void DrawContents(Rect operationRect, int controlPrefix)
         {
             var presetsContent = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("format"),
-                LocalizationManager.Instance.GetTranslation("selectPresetFormat"));
+                Texts.format,
+                Texts.selectPresetFormat);
             var names = new List<GUIContent>(this.GUIPresets.Count);
             foreach (var preset in this.GUIPresets)
             {
@@ -170,8 +170,8 @@ namespace RedBlueGames.MulliganRenamer
 
             EditorGUI.BeginDisabledGroup(selectedPreset.ReadOnly);
             var countFormatContent = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("countFormat"),
-                LocalizationManager.Instance.GetTranslation("theStringFormatToUseWhenAddingTheCountToName"));
+                Texts.countFormat,
+                Texts.theStringFormatToUseWhenAddingTheCountToName);
             GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, countFormatContent.text));
             if (selectedPreset.ReadOnly)
             {
@@ -207,15 +207,15 @@ namespace RedBlueGames.MulliganRenamer
                     return;
                 }
 
-                var helpBoxMessage = LocalizationManager.Instance.GetTranslation("invalidCountFormat");
+                var helpBoxMessage = Texts.invalidCountFormat;
                 var helpRect = operationRect.GetSplitVerticalWeighted(++currentLine, LineSpacing, weights);
                 helpRect = helpRect.AddPadding(4, 4, 4, 4);
                 EditorGUI.HelpBox(helpRect, helpBoxMessage, MessageType.Warning);
             }
 
             var countFromContent = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("countFrom"),
-                LocalizationManager.Instance.GetTranslation("theValueToStartCountingFrom"));
+                Texts.countFrom,
+                Texts.theValueToStartCountingFrom);
             GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, countFromContent.text));
             this.RenameOperation.StartingCount = EditorGUI.IntField(
                 operationRect.GetSplitVerticalWeighted(++currentLine, LineSpacing, weights),
@@ -223,8 +223,8 @@ namespace RedBlueGames.MulliganRenamer
                 this.RenameOperation.StartingCount);
 
             var incrementContent = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("increment"),
-                LocalizationManager.Instance.GetTranslation("theValueToAddToEachObjectWhenCounting"));
+                Texts.increment,
+                Texts.theValueToAddToEachObjectWhenCounting);
             GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, incrementContent.text));
             this.RenameOperation.Increment = EditorGUI.IntField(
                 operationRect.GetSplitVerticalWeighted(++currentLine, LineSpacing, weights),
@@ -232,8 +232,8 @@ namespace RedBlueGames.MulliganRenamer
                 this.RenameOperation.Increment);
 
             var prependContent = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("addAsPrefix"),
-                LocalizationManager.Instance.GetTranslation("addTheCountToTheFontOfTheObjectName"));
+                Texts.addAsPrefix,
+                Texts.addTheCountToTheFontOfTheObjectName);
             GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, prependContent.text));
             this.RenameOperation.Prepend = EditorGUI.Toggle(
                 operationRect.GetSplitVerticalWeighted(++currentLine, LineSpacing, weights),
@@ -266,7 +266,7 @@ namespace RedBlueGames.MulliganRenamer
 
             var customPreset = new EnumeratePresetGUI()
             {
-                DisplayName = LocalizationManager.Instance.GetTranslation("custom"),
+                DisplayName = Texts.custom,
                 Preset = EnumerateOperation.CountFormatPreset.Custom,
                 ReadOnly = false
             };

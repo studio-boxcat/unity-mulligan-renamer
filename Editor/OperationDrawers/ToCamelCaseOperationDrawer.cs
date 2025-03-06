@@ -36,7 +36,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return GetOperationPath("modify", "toCamelCase");
+                return Texts.modify + "/" + Texts.toCamelCase;
             }
         }
 
@@ -48,7 +48,7 @@ namespace RedBlueGames.MulliganRenamer
         {
             get
             {
-                return LocalizationManager.Instance.GetTranslation("toCamelCase");
+                return Texts.toCamelCase;
             }
         }
 
@@ -95,8 +95,8 @@ namespace RedBlueGames.MulliganRenamer
             var singleLineRect = operationRect.GetSplitVertical(1, 2, LineSpacing);
 
             var pascalLabel = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("usePascalCasing"),
-                LocalizationManager.Instance.GetTranslation("flagToCapitalizeTheFirstLetterOfname"));
+                Texts.usePascalCasing,
+                Texts.flagToCapitalizeTheFirstLetterOfname);
             GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, "Pascal"));
             this.RenameOperation.UsePascal = EditorGUI.Toggle(
                 singleLineRect,
@@ -106,9 +106,9 @@ namespace RedBlueGames.MulliganRenamer
 
             var delimitersRect = operationRect.GetSplitVertical(2, 2, LineSpacing);
             var delimitersLabel = new GUIContent(
-                LocalizationManager.Instance.GetTranslation("delimiterCharacters"),
-                LocalizationManager.Instance.GetTranslation("caseSensitiveCharactersIndicateStart"));
-            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, LocalizationManager.Instance.GetTranslation("delimiters")));
+                Texts.delimiterCharacters,
+                Texts.caseSensitiveCharactersIndicateStart);
+            GUI.SetNextControlName(GUIControlNameUtility.CreatePrefixedName(controlPrefix, Texts.delimiters));
             this.RenameOperation.DelimiterCharacters = EditorGUI.TextField(
                 delimitersRect,
                 delimitersLabel,
