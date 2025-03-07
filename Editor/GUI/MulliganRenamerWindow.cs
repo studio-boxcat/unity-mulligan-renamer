@@ -31,7 +31,7 @@ namespace RedBlueGames.MulliganRenamer
     /// <summary>
     /// Tool that tries to allow renaming mulitple selections by parsing similar substrings
     /// </summary>
-    public class MulliganRenamerWindow : EditorWindow, IHasCustomMenu
+    public class MulliganRenamerWindow : EditorWindow
     {
         private const string VersionString = "1.7.8";
         private const string WindowMenuPath = "Window/Red Blue/Mulligan Renamer";
@@ -141,7 +141,7 @@ namespace RedBlueGames.MulliganRenamer
         [MenuItem(WindowMenuPath, false)]
         public static MulliganRenamerWindow ShowWindow()
         {
-            return EditorWindow.GetWindow<MulliganRenamerWindow>(false, "Mulligan Renamer", true);
+            return EditorWindow.GetWindow<MulliganRenamerWindow>(true, "Mulligan Renamer", true);
         }
 
         public static void ShowWindowWithSelectedObjects()
@@ -209,19 +209,6 @@ namespace RedBlueGames.MulliganRenamer
             }
 
             return selected;
-        }
-
-        /// <summary>
-        /// Add the menu items for the generic Context Menu
-        /// </summary>
-        /// <param name="menu"></param>
-        public void AddItemsToMenu(GenericMenu menu)
-        {
-            menu.AddItem(
-                new GUIContent(
-                    Texts.preferences),
-                    false,
-                    () => this.ShowPreferencesWindowForCurrentUnityVersion());
         }
 
         private void OnEnable()
@@ -628,18 +615,9 @@ namespace RedBlueGames.MulliganRenamer
             var renameOpsLabel = new GUIContent(headerLabel);
             EditorGUI.LabelField(headerLabelRect, renameOpsLabel, headerLabelStyle);
 
-            var preferencesButtonRect = new Rect(headerRect);
-            preferencesButtonRect.width = 80.0f;
-            preferencesButtonRect.x = headerRect.width - preferencesButtonRect.width;
-
-            if (GUI.Button(preferencesButtonRect, Texts.preferences, EditorStyles.toolbarButton))
-            {
-                this.ShowPreferencesWindowForCurrentUnityVersion();
-            }
-
             var presetButtonsRect = new Rect(headerRect);
             presetButtonsRect.width = 80.0f;
-            presetButtonsRect.x = headerRect.width - presetButtonsRect.width - preferencesButtonRect.width;
+            presetButtonsRect.x = headerRect.width - presetButtonsRect.width;
             if (GUI.Button(presetButtonsRect, Texts.presets, EditorStyles.toolbarDropDown))
             {
                 var menu = new GenericMenu();
@@ -666,17 +644,6 @@ namespace RedBlueGames.MulliganRenamer
 
                 menu.ShowAsContext();
             }
-        }
-
-        private void ShowPreferencesWindowForCurrentUnityVersion()
-        {
-            // I used an API for preferences that was introduced in 2018.3 (SettingsProvider).
-            // Draw a custom window for older versions
-#if UNITY_2018_3_OR_NEWER
-            SettingsService.OpenUserPreferences(MulliganSettingsProvider.Path);
-#else
-            MulliganUserPreferencesWindow.ShowWindow();
-#endif
         }
 
         private void DrawRenameOperations(Rect operationsRect)

@@ -283,8 +283,6 @@ namespace RedBlueGames.MulliganRenamer
             this.guiContents = new GUIContents();
 
             this.guiContents.DropPrompt = new GUIContent(Texts.noObjectsSpecified);
-            this.guiContents.DropPromptHintInsideScroll = new GUIContent(Texts.addMoreObjectsDragHere);
-            this.guiContents.DropPromptHint = new GUIContent(Texts.addMoreObjectsDragPanel);
             this.guiContents.DropPromptRepeat = new GUIContent(Texts.toRenameMoreObjects);
         }
 
@@ -316,9 +314,6 @@ namespace RedBlueGames.MulliganRenamer
             this.guiStyles.DropPrompt.wordWrap = true;
             this.guiStyles.DropPromptRepeat = new GUIStyle(EditorStyles.label);
             this.guiStyles.DropPromptRepeat.alignment = TextAnchor.MiddleCenter;
-
-            this.guiStyles.DropPromptHintInsideScroll = new GUIStyle(EditorStyles.centeredGreyMiniLabel);
-            this.guiStyles.DropPromptHint = new GUIStyle(EditorStyles.wordWrappedMiniLabel);
 
             this.guiStyles.RenameSuccessPrompt = new GUIStyle(EditorStyles.label);
             this.guiStyles.RenameSuccessPrompt.alignment = TextAnchor.MiddleCenter;
@@ -460,15 +455,6 @@ namespace RedBlueGames.MulliganRenamer
 
                 this.DrawAddSelectedObjectsButton(addSelectedObjectsButtonRect);
 
-                if (!scrollLayout.ContentsFitWithoutAnyScrolling(contentsLayout))
-                {
-                    var hintRect = new Rect(scrollViewRect);
-                    hintRect.height = EditorGUIUtility.singleLineHeight * 2.0f;
-                    hintRect.y += scrollViewRect.height;
-                    hintRect.width = scrollViewRect.width - addSelectedObjectsButtonRect.width - removeAllButtonRect.width - buttonSpacing;
-                    EditorGUI.LabelField(hintRect, this.guiContents.DropPromptHint, this.guiStyles.DropPromptHint);
-                }
-
                 this.drewEmptyLastFrame = false;
             }
 
@@ -566,12 +552,6 @@ namespace RedBlueGames.MulliganRenamer
             var rowRect = new Rect(scrollLayout.ScrollRect);
             rowRect.width = Mathf.Max(contentsLayout.ContentsRect.width, scrollLayout.ScrollRect.width);
             this.DrawPreviewRows(rowRect, previewContents, contentsLayout, panelStyle);
-
-            // Add the hint into the scroll view if there's room
-            if (scrollLayout.ContentsFitWithoutAnyScrolling(contentsLayout))
-            {
-                EditorGUI.LabelField(scrollLayout.HintRect, this.guiContents.DropPromptHintInsideScroll, this.guiStyles.DropPromptHintInsideScroll);
-            }
 
             GUI.EndScrollView();
 
@@ -1382,10 +1362,6 @@ namespace RedBlueGames.MulliganRenamer
 
             public GUIStyle DropPrompt { get; set; }
 
-            public GUIStyle DropPromptHint { get; set; }
-
-            public GUIStyle DropPromptHintInsideScroll { get; set; }
-
             public GUIStyle DropPromptRepeat { get; set; }
 
             public GUIStyle RenameSuccessPrompt { get; set; }
@@ -1404,10 +1380,6 @@ namespace RedBlueGames.MulliganRenamer
             public GUIContent DropPrompt { get; set; }
 
             public GUIContent DropPromptRepeat { get; set; }
-
-            public GUIContent DropPromptHint { get; set; }
-
-            public GUIContent DropPromptHintInsideScroll { get; set; }
         }
     }
 }
